@@ -1,11 +1,9 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Promotion Price Strategy</title>
-    <!-- Google Fonts: Inter -->
+    <title>Promotion Price Strategy (Pop-up)</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -20,349 +18,244 @@
 
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f8fafc; /* slate-50 */
-            color: #334155; /* slate-700 */
+            background-color: #e2e8f0; /* slate-200, a slightly darker bg for contrast */
+            color: #334155;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
         }
 
-        /* --- Layout Containers --- */
-        .container-wrapper {
+        /* --- Main Page Content (for demonstration) --- */
+        .main-page-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
             min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 1rem;
-        }
-
-        .main-content {
-            width: 100%;
-            max-width: 56rem; /* max-w-3xl */
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        /* --- Header --- */
-        .header {
-            text-align: center;
-            margin-bottom: 2rem;
-        }
-
-        .header h1 {
-            font-size: 1.875rem; /* text-3xl */
-            font-weight: 800; /* font-bold */
-            color: #1e293b; /* slate-800 */
-        }
-
-        .header p {
-            color: #64748b; /* slate-500 */
-            margin-top: 0.5rem;
-            font-size: 1rem; /* text-md */
-        }
-
-        /* --- Card Component --- */
-        .card {
-            background-color: #ffffff;
-            border-radius: 1rem; /* rounded-2xl */
-            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1); /* shadow-lg */
-            padding: 1.5rem; /* p-6 */
-        }
-        
-        .card.margin-top-6 {
-             margin-top: 1.5rem;
-        }
-
-        /* --- Price Selection Section --- */
-        .price-selector .text-center {
-            text-align: center;
-        }
-        
-        .price-selector .price-label {
-            font-size: 0.875rem; /* text-sm */
-            font-weight: 500; /* font-medium */
-            color: #475569; /* slate-600 */
-        }
-
-        .price-selector .price-display {
-            margin-top: 1rem;
-            margin-bottom: 1rem;
-            font-size: 3rem; /* text-5xl */
-            font-weight: 800; /* font-bold */
-            color: #4f46e5; /* indigo-600 */
-            letter-spacing: -0.025em; /* tracking-tight */
-        }
-        
-        .price-selector .slider-container {
-             margin-top: 1rem;
-        }
-
-        .price-selector .range-labels {
-            display: flex;
-            justify-content: space-between;
-            font-size: 0.75rem; /* text-xs */
-            color: #64748b; /* slate-500 */
-            margin-top: 0.5rem;
-            padding-left: 0.25rem;
-            padding-right: 0.25rem;
-        }
-
-        /* --- Popularity Feedback Section --- */
-        .feedback-section {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            padding: 2rem;
             text-align: center;
         }
 
-        .feedback-section .icon-wrapper {
-            background-color: #e0e7ff; /* indigo-100 */
-            padding: 1rem;
-            border-radius: 9999px; /* rounded-full */
-            margin-bottom: 1rem;
-        }
-
-        .feedback-section .icon {
-            height: 2rem; /* h-8 */
-            width: 2rem; /* w-8 */
-            color: #4f46e5; /* indigo-600 */
-        }
-
-        .feedback-section h2 {
-            font-size: 1.25rem; /* text-xl */
-            font-weight: 600; /* font-semibold */
-            color: #1e293b; /* slate-800 */
-        }
-        
-        .feedback-section p {
-            color: #334155; /* slate-600 */
-            margin-top: 0.25rem;
-        }
-        
-        .feedback-section .highlight {
-            font-weight: 700; /* font-bold */
-            color: #4f46e5; /* indigo-600 */
-            font-size: 1.125rem; /* text-lg */
-        }
-        
-        /* --- Strategy Section --- */
-        .strategy-wrapper {
-             margin-top: 2.5rem;
-             padding-top: 2rem;
-             border-top: 1px solid #e2e8f0; /* border-slate-200 */
-        }
-        
-        .strategy-wrapper .section-title {
-            font-size: 1.5rem; /* text-2xl */
-            font-weight: 700; /* font-bold */
-            color: #1e293b; /* slate-800 */
-            text-align: center;
-            margin-bottom: 1.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .strategy-wrapper .icon {
-            height: 1.5rem;
-            width: 1.5rem;
-            margin-right: 0.75rem;
-            color: #f59e0b; /* amber-500 */
-        }
-        
-        .strategy-card {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 1.5rem;
-        }
-        
-        .strategy-card .image-container {
-            width: 100%;
-            flex-shrink: 0;
-        }
-        
-        .strategy-card img {
-            width: 100%;
-            height: auto;
-            object-fit: cover;
-            border-radius: 0.75rem; /* rounded-xl */
-            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1); /* shadow-md */
-        }
-        
-        .strategy-card .content-container {
-            width: 100%;
-        }
-        
-        .strategy-card .metric-badge {
-            display: inline-flex;
-            align-items: center;
-            background-color: #e0e7ff; /* bg-indigo-100 */
-            color: #4338ca; /* text-indigo-700 */
-            font-size: 0.75rem; /* text-xs */
-            font-weight: 600; /* font-semibold */
-            padding: 0.25rem 0.75rem;
-            border-radius: 9999px; /* rounded-full */
-            margin-bottom: 0.75rem;
-        }
-        
-        .strategy-card .metric-badge .icon {
-            height: 1rem;
-            width: 1rem;
-            margin-right: 0.375rem;
-        }
-        
-        .strategy-card h3 {
-            font-size: 1.25rem; /* text-xl */
-            font-weight: 700;
-            color: #1e293b; /* slate-800 */
-        }
-        
-        .strategy-card p {
-            color: #475569; /* slate-600 */
-            margin-top: 0.5rem;
-            line-height: 1.6;
-        }
-
-        /* --- Range Slider --- */
-        .range-thumb {
-            -webkit-appearance: none;
-            appearance: none;
-            width: 100%;
-            height: 0.75rem; /* h-3 */
-            background-color: #e2e8f0; /* bg-slate-200 */
-            border-radius: 9999px; /* rounded-full */
+        #open-modal-btn {
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            color: #ffffff;
+            background-color: #4f46e5;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 0.5rem;
             cursor: pointer;
-            /* Static example, 66% filled */
-            background: linear-gradient(to right, #c7d2fe 0%, #c7d2fe 66%, #e2e8f0 66%, #e2e8f0 100%);
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            transition: background-color 0.2s;
         }
 
-        .range-thumb::-webkit-slider-thumb {
-          -webkit-appearance: none;
-          appearance: none;
-          width: 24px;
-          height: 24px;
-          background: #4f46e5;
-          border-radius: 50%;
-          cursor: pointer;
-          border: 4px solid #fff;
-          box-shadow: 0 0 5px rgba(0,0,0,0.2);
-          margin-top: -8px; 
+        #open-modal-btn:hover {
+            background-color: #4338ca;
         }
 
-        .range-thumb::-moz-range-thumb {
-          width: 24px;
-          height: 24px;
-          background: #4f46e5;
-          border-radius: 50%;
-          cursor: pointer;
-          border: 4px solid #fff;
-          box-shadow: 0 0 5px rgba(0,0,0,0.2);
+        /* --- Modal Styles --- */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(15, 23, 42, 0.6); /* slate-900 with opacity */
+            display: none; /* Hidden by default */
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
         }
         
-        /* --- Responsive Breakpoints --- */
-        @media (min-width: 640px) { /* sm breakpoint */
-            .header h1 { font-size: 2.25rem; } /* sm:text-4xl */
-            .header p { font-size: 1.125rem; } /* sm:text-lg */
-            .card { padding: 2rem; } /* sm:p-8 */
-            .price-selector .price-display { font-size: 3.75rem; } /* sm:text-6xl */
-            .feedback-section { flex-direction: row; text-align: left; } /* sm:flex-row, sm:text-left */
-            .feedback-section .icon-wrapper { margin-bottom: 0; margin-right: 1.5rem; } /* sm:mb-0, sm:mr-6 */
-            .strategy-card h3 { font-size: 1.5rem; } /* sm:text-2xl */
+        .modal-overlay.visible {
+            display: flex; /* Shown with JS */
         }
 
-        @media (min-width: 768px) { /* md breakpoint */
-             .strategy-card { flex-direction: row; align-items: center; gap: 2rem; } /* md:flex-row, md:items-center, md:gap-8 */
-             .strategy-card .image-container { width: 40%; } /* md:w-2/5 */
-             .strategy-card .content-container { width: 60%; } /* md:w-3/5 */
+        .modal-panel {
+            background-color: #f8fafc; /* The light gray 'page' background */
+            width: 90%;
+            max-width: 56rem;
+            max-height: 90vh; /* Important for scrolling on small screens */
+            overflow-y: auto; /* Adds scrollbar if content overflows */
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+            position: relative; /* For positioning the close button */
         }
 
+        .modal-close-btn {
+            position: absolute;
+            top: 0.75rem;
+            right: 0.75rem;
+            background: none;
+            border: none;
+            font-size: 2rem;
+            color: #94a3b8; /* slate-400 */
+            cursor: pointer;
+            line-height: 1;
+            padding: 0.5rem;
+        }
+        
+        .modal-close-btn:hover {
+            color: #334155; /* slate-700 */
+        }
+
+        /* --- Re-used content styles from previous example --- */
+        /* Note: No changes needed here, they are just applied within the modal now */
+        .header { text-align: center; margin-bottom: 2rem; }
+        .header h1 { font-size: 1.875rem; font-weight: 800; color: #1e293b; }
+        .header p { color: #64748b; margin-top: 0.5rem; font-size: 1rem; }
+
+        .card { background-color: #ffffff; border-radius: 1rem; box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1); padding: 1.5rem; }
+        .card.margin-top-6 { margin-top: 1.5rem; }
+        
+        .price-selector .text-center { text-align: center; }
+        .price-selector .price-label { font-size: 0.875rem; font-weight: 500; color: #475569; }
+        .price-selector .price-display { margin: 1rem 0; font-size: 3rem; font-weight: 800; color: #4f46e5; letter-spacing: -0.025em; }
+        .price-selector .slider-container { margin-top: 1rem; }
+        .price-selector .range-labels { display: flex; justify-content: space-between; font-size: 0.75rem; color: #64748b; margin-top: 0.5rem; padding: 0 0.25rem; }
+        
+        .feedback-section { display: flex; flex-direction: column; align-items: center; text-align: center; }
+        .feedback-section .icon-wrapper { background-color: #e0e7ff; padding: 1rem; border-radius: 9999px; margin-bottom: 1rem; }
+        .feedback-section .icon { height: 2rem; width: 2rem; color: #4f46e5; }
+        .feedback-section h2 { font-size: 1.25rem; font-weight: 600; color: #1e293b; }
+        .feedback-section p { color: #334155; margin-top: 0.25rem; }
+        .feedback-section .highlight { font-weight: 700; color: #4f46e5; font-size: 1.125rem; }
+        
+        .strategy-wrapper { margin-top: 2.5rem; padding-top: 2rem; border-top: 1px solid #e2e8f0; }
+        .strategy-wrapper .section-title { font-size: 1.5rem; font-weight: 700; color: #1e293b; text-align: center; margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: center; }
+        .strategy-wrapper .icon { height: 1.5rem; width: 1.5rem; margin-right: 0.75rem; color: #f59e0b; }
+        
+        .strategy-card { display: flex; flex-direction: column; align-items: flex-start; gap: 1.5rem; }
+        .strategy-card .image-container { width: 100%; flex-shrink: 0; }
+        .strategy-card img { width: 100%; height: auto; object-fit: cover; border-radius: 0.75rem; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1); }
+        .strategy-card .content-container { width: 100%; }
+        .strategy-card .metric-badge { display: inline-flex; align-items: center; background-color: #e0e7ff; color: #4338ca; font-size: 0.75rem; font-weight: 600; padding: 0.25rem 0.75rem; border-radius: 9999px; margin-bottom: 0.75rem; }
+        .strategy-card .metric-badge .icon { height: 1rem; width: 1rem; margin-right: 0.375rem; }
+        .strategy-card h3 { font-size: 1.25rem; font-weight: 700; color: #1e293b; }
+        .strategy-card p { color: #475569; margin-top: 0.5rem; line-height: 1.6; }
+        
+        .range-thumb { -webkit-appearance: none; appearance: none; width: 100%; height: 0.75rem; background-color: #e2e8f0; border-radius: 9999px; cursor: pointer; background: linear-gradient(to right, #c7d2fe 0%, #c7d2fe 66%, #e2e8f0 66%, #e2e8f0 100%); }
+        .range-thumb::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 24px; height: 24px; background: #4f46e5; border-radius: 50%; cursor: pointer; border: 4px solid #fff; box-shadow: 0 0 5px rgba(0,0,0,0.2); margin-top: -8px; }
+        .range-thumb::-moz-range-thumb { width: 24px; height: 24px; background: #4f46e5; border-radius: 50%; cursor: pointer; border: 4px solid #fff; box-shadow: 0 0 5px rgba(0,0,0,0.2); }
+        
+        @media (min-width: 640px) {
+            .header h1 { font-size: 2.25rem; }
+            .header p { font-size: 1.125rem; }
+            .card { padding: 2rem; }
+            .price-selector .price-display { font-size: 3.75rem; }
+            .feedback-section { flex-direction: row; text-align: left; }
+            .feedback-section .icon-wrapper { margin-bottom: 0; margin-right: 1.5rem; }
+            .strategy-card h3 { font-size: 1.5rem; }
+        }
+        @media (min-width: 768px) {
+             .strategy-card { flex-direction: row; align-items: center; gap: 2rem; }
+             .strategy-card .image-container { width: 40%; }
+             .strategy-card .content-container { width: 60%; }
+        }
     </style>
 </head>
 <body>
 
-    <div class="container-wrapper">
-      <div class="main-content">
-        
-        <!-- Header Section -->
-        <header class="header">
-          <h1>Find Your Pricing Sweet Spot</h1>
-          <p>Use historical data to select a competitive promotional price.</p>
-        </header>
-
-        <!-- Main Card for Price Selection -->
-        <div class="card price-selector">
-          <div class="text-center">
-            <label for="price-slider" class="price-label">
-              Your Promotional Price
-            </label>
-            <div class="price-display">
-              $150.00
-            </div>
-          </div>
-          
-          <div class="slider-container">
-            <input
-              id="price-slider"
-              type="range"
-              min="50"
-              max="250"
-              step="1"
-              value="150"
-              class="range-thumb"
-            />
-            <div class="range-labels">
-              <span>$50</span>
-              <span>$250</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Popularity Feedback Section -->
-        <div class="card margin-top-6">
-           <div class="feedback-section">
-              <div class="icon-wrapper">
-                <!-- SVG for 'users' icon -->
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-              </div>
-              <div>
-                <h2>Seller Adoption Rate</h2>
-                <p>
-                  Approximately <span class="highlight">81%</span> of successful sellers have previously used this price point in their promotions.
-                </p>
-              </div>
-           </div>
-        </div>
-
-        <!-- Promotion Strategy Section -->
-        <div class="strategy-wrapper">
-          <h2 class="section-title">
-            <!-- SVG for 'lightbulb' icon -->
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 9 2c0 1 .6 2.4 2 3.4L12 6c.9 1 2 2.2 2 3.5-1.1 1.2-1.8 2.8-2 4.5Z"/><path d="M9 18h6"/><path d="M10 22h4"/></svg>
-            Recommended Strategy
-          </h2>
-          <div class="card strategy-card">
-              <div class="image-container">
-                <img
-                  src="https://placehold.co/600x400/818cf8/ffffff?text=Weekend+Sale+Concept"
-                  alt="Weekend Flash Sale"
-                  onerror="this.onerror=null;this.src='https://placehold.co/600x400/ef4444/ffffff?text=Image+Error';"
-                />
-              </div>
-              <div class="content-container">
-                <span class="metric-badge">
-                    <!-- SVG for 'trending-up' icon -->
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
-                    25% Potential CTR Boost
-                </span>
-                <h3>Weekend Flash Sale</h3>
-                <p>
-                  Based on your selected price point, a weekend flash sale is highly effective. This strategy creates urgency, targeting buyers who are active on Saturdays and Sundays, leading to a potential 25% increase in click-through rates.
-                </p>
-              </div>
-          </div>
-        </div>
-      </div>
+    <div class="main-page-content">
+        <h1 style="font-size: 2rem; font-weight: 700; color: #1e293b;">Your Application Page</h1>
+        <p style="margin: 1rem 0 2rem 0; color: #475569;">Click the button below to set up your promotion.</p>
+        <button id="open-modal-btn">Open Price Strategy</button>
     </div>
 
+    <div id="modal-overlay" class="modal-overlay">
+        
+        <div id="modal-panel" class="modal-panel">
+            
+            <button id="close-modal-btn" class="modal-close-btn" title="Close">&times;</button>
+            
+            <header class="header">
+              <h1>Find Your Pricing Sweet Spot</h1>
+              <p>Use historical data to select a competitive promotional price.</p>
+            </header>
+
+            <div class="card price-selector">
+              <div class="text-center">
+                <label for="price-slider" class="price-label">Your Promotional Price</label>
+                <div class="price-display">$150.00</div>
+              </div>
+              <div class="slider-container">
+                <input id="price-slider" type="range" min="50" max="250" step="1" value="150" class="range-thumb"/>
+                <div class="range-labels">
+                  <span>$50</span>
+                  <span>$250</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="card margin-top-6">
+               <div class="feedback-section">
+                  <div class="icon-wrapper">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                  </div>
+                  <div>
+                    <h2>Seller Adoption Rate</h2>
+                    <p>Approximately <span class="highlight">81%</span> of successful sellers have previously used this price point.</p>
+                  </div>
+               </div>
+            </div>
+
+            <div class="strategy-wrapper">
+              <h2 class="section-title">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 9 2c0 1 .6 2.4 2 3.4L12 6c.9 1 2 2.2 2 3.5-1.1 1.2-1.8 2.8-2 4.5Z"/><path d="M9 18h6"/><path d="M10 22h4"/></svg>
+                Recommended Strategy
+              </h2>
+              <div class="card strategy-card">
+                  <div class="image-container">
+                    <img src="https://placehold.co/600x400/818cf8/ffffff?text=Weekend+Sale+Concept" alt="Weekend Flash Sale"/>
+                  </div>
+                  <div class="content-container">
+                    <span class="metric-badge">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+                        25% Potential CTR Boost
+                    </span>
+                    <h3>Weekend Flash Sale</h3>
+                    <p>Based on your selected price point, a weekend flash sale is highly effective. This strategy creates urgency, targeting buyers who are active on Saturdays and Sundays.</p>
+                  </div>
+              </div>
+            </div>
+            </div>
+    </div>
+
+    <script>
+        // --- JavaScript for Modal Functionality ---
+        const openModalBtn = document.getElementById('open-modal-btn');
+        const closeModalBtn = document.getElementById('close-modal-btn');
+        const modalOverlay = document.getElementById('modal-overlay');
+        const modalPanel = document.getElementById('modal-panel');
+
+        // Function to open the modal
+        const openModal = () => {
+            modalOverlay.classList.add('visible');
+        };
+
+        // Function to close the modal
+        const closeModal = () => {
+            modalOverlay.classList.remove('visible');
+        };
+
+        // Event Listeners
+        openModalBtn.addEventListener('click', openModal);
+        closeModalBtn.addEventListener('click', closeModal);
+
+        // Close modal when clicking on the overlay (but not the panel itself)
+        modalOverlay.addEventListener('click', (event) => {
+            if (event.target === modalOverlay) {
+                closeModal();
+            }
+        });
+
+        // Close modal with the 'Escape' key
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape' && modalOverlay.classList.contains('visible')) {
+                closeModal();
+            }
+        });
+    </script>
 </body>
 </html>
